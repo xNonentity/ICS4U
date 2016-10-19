@@ -1,6 +1,6 @@
 public class Student implements Comparable {
 
-	private static long idGenerator = 3000000;
+	private static long idGenerator = 300000000;
 	private long studentNumber;
 	
 	public Student() {
@@ -15,8 +15,18 @@ public class Student implements Comparable {
 		setPhoneNum(0);
 		setBirthDay(0);
 		setBirthYear(0);
+		this.setStudentNumber(idGenerator);
+		idGenerator++;
+	}
+	
+	public void setStudentNumber(long sNum) {
+		this.studentNumber = sNum;
 	}
 
+	public long getStudentNumber() {
+		return this.studentNumber;
+	}
+		
 	// First Name
 	private String firstName;
 
@@ -155,15 +165,10 @@ public class Student implements Comparable {
 		setPhoneNum(phoneNum);
 		setBirthDay(birthDay);
 		setBirthYear(birthYear);
-		idGenerator++;
 	}
 
-	int var1;
-	int var2;
-	int var3;
-
 	public String toString() {
-		return var1 + "," + var2 + "," + var3;
+		return birthMonth + "," + firstName + "," + lastName + "," + strName + "," + cityName + "," + provName + posCode + "," + birthMonth;
 	}
 
 	@Override
