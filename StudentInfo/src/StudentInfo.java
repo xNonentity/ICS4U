@@ -17,7 +17,7 @@ public class StudentInfo {
 	static int numStu;
 	static ArrayList<Student> stuRecs = new ArrayList<Student>();
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException{
 
 		int menuOption;
 		boolean quit = false;
@@ -34,25 +34,28 @@ public class StudentInfo {
 			System.out.println("6. Save the records.");
 			System.out.println("10. Quit");
 
-			menuOption = Integer.parseInt(input.nextLine());
+			menuOption = input.nextInt(); 
 
 			if (menuOption == 1) {
 				studentInfo();
+				input.nextLine(); 
 			} else if (menuOption == 2) {
 				System.out.println("Please enter the number of the student you'd like to print.");
 				numStu = Integer.parseInt(input.nextLine());
 				printInfo(stuRecs.get(numStu - 1));
 			} else if (menuOption == 3) {
-				printAll();
+				printAll(student1);
 			} else if (menuOption == 4) {
 				long remove; 
 				boolean removal = false; 
 				System.out.println("Please enter the student number of the student you'd like to remove.");
 				remove = input.nextLong();
 				while (removal = false){
-					if (remove > 3000000){
-						removeStudent(remove - 30000000);
+					if (remove > 300000000){
+						removeStudent(remove - 300000001);
+						removal = true;
 					}
+				//input.nextLine(); 
 				}
 			} else if (menuOption == 5) {
 				searchStudent();
@@ -72,10 +75,11 @@ public class StudentInfo {
 		} while (quit == false);
 		System.exit(0);
 	}
-
 	public static void studentInfo() {
+		Student student1 = new Student(); 
 			// First Name
 			System.out.println("Please input your first name.");
+			student1.setFirstName(input.nextLine());
 			student1.setFirstName(input.nextLine());
 			// Last Name
 			System.out.println("Please input your last name.");
@@ -118,7 +122,6 @@ public class StudentInfo {
 			// Phone Number
 			System.out.println("Please inset your phone number.");
 			student1.setPhoneNum(Long.parseLong(input.nextLine()));
-			input.nextLine();
 			// Birth month
 			System.out.println("Please insert your birth month.");
 			student1.setBirthMonth(input.nextLine());
@@ -157,15 +160,15 @@ public class StudentInfo {
 
 	}
  
-	public static void printAll() throws FileNotFoundException {
+	public static void printAll(Student student2) throws FileNotFoundException {
 		for (int i = 0; i < stuRecs.size(); i++) {
 
 			int totalStu = i + 1;
-			System.out.println("Students:" + totalStu);
+			System.out.println("Students: " + totalStu);
 			printInfo(stuRecs.get(i));
+			System.out.println("");
 		}
 	}
-
 	public static void sortRecords() {
 		Collections.sort(stuRecs);
 	}
@@ -179,8 +182,7 @@ public class StudentInfo {
 				PrintStream fps = new PrintStream(fileOutputStream);
 				fps.println(stuRecs.size());
 				for (int i = 0; i < stuRecs.size(); i++){
-					fps.println(stuRecs.get(i).toString());
-					
+					fps.println(stuRecs.get(i).toString());		
 				}
 				fileOutputStream.close(); 
 			} catch (FileNotFoundException e) {
@@ -196,6 +198,5 @@ public class StudentInfo {
 				e.printStackTrace();
 			}	
 		}
-		
 	}
 }
