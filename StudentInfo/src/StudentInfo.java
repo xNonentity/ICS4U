@@ -21,7 +21,7 @@ public class StudentInfo {
 
 		int menuOption;
 		boolean quit = false;
-
+		
 		// menu
 		do {
 			System.out.println("Hello, this is the school system's information board.");
@@ -46,17 +46,7 @@ public class StudentInfo {
 			} else if (menuOption == 3) {
 				printAll(student1);
 			} else if (menuOption == 4) {
-				long remove; 
-				boolean removal = false; 
-				System.out.println("Please enter the student number of the student you'd like to remove.");
-				remove = input.nextLong();
-				while (removal = false){
-					if (remove > 300000000){
-						removeStudent(remove - 300000001);
-						removal = true;
-					}
-				//input.nextLine(); 
-				}
+				removeStudent(); 
 			} else if (menuOption == 5) {
 				searchStudent();
 			} else if (menuOption == 6) {
@@ -131,6 +121,7 @@ public class StudentInfo {
 			// Birth Year
 			System.out.println("Please insert your birth year.");
 			student1.setBirthYear(Integer.parseInt(input.nextLine()));
+			
 			allStu++;
 			stuRecs.add(student1); // Adding the student
 		
@@ -148,9 +139,31 @@ public class StudentInfo {
 		System.out.println("");
 	}
 
-	public static void removeStudent(long num) {
+	public static void removeStudent() {
 		// inputting a number that matches to a specific student to remove.
-		stuRecs.remove(num);
+		long remove;
+		boolean removal = false; 
+		System.out.println("Please enter the student number of the student you'd like to remove.");
+		remove = input.nextLong();
+		//do{ 
+			for (int i = 0; i < stuRecs.size(); i++){
+				if (remove == student1.getStudentNumber()){
+					stuRecs.remove(i);
+					
+				}
+				break; 
+			}
+			
+			/*if (remove > 300000000){
+				stuRecs.remove(remove - 300000001);
+				break;
+			}
+			else{
+				
+			}*/
+			
+		//} while (removal == false);
+		
 	}
 
 	public static void searchStudent() throws FileNotFoundException {
