@@ -24,6 +24,7 @@ public class StudentInfo {
 		
 		// menu
 		do {
+			//Prints out the options
 			System.out.println("Hello, this is the school system's information board.");
 			System.out.println("Input one of the following options.");
 			System.out.println("1. Enter a new student.");
@@ -33,15 +34,14 @@ public class StudentInfo {
 			System.out.println("5. Search for a student.");
 			System.out.println("6. Save the records.");
 			System.out.println("10. Quit");
-
 			menuOption = input.nextInt(); 
-
+			//Corresponds to what the user chooses from the menu
 			if (menuOption == 1) {
 				studentInfo();
 				input.nextLine(); 
 			} else if (menuOption == 2) {
 				System.out.println("Please enter the number of the student you'd like to print.");
-				numStu = Integer.parseInt(input.nextLine());
+				numStu = input.nextInt();
 				printInfo(stuRecs.get(numStu - 1));
 			} else if (menuOption == 3) {
 				printAll(student1);
@@ -59,15 +59,15 @@ public class StudentInfo {
 
 			} else if (menuOption == 10) {
 				System.out.println("Have a nice day!");
-				quit = true;
+				quit = true; //Breaks out the loop
 			}
-
 		} while (quit == false);
 		System.exit(0);
 	}
 	public static void studentInfo() {
 		Student student1 = new Student(); 
 			// First Name
+			System.out.println("");
 			System.out.println("Please input your first name.");
 			student1.setFirstName(input.nextLine());
 			student1.setFirstName(input.nextLine());
@@ -120,13 +120,11 @@ public class StudentInfo {
 			student1.setBirthDay(Integer.parseInt(input.nextLine()));
 			// Birth Year
 			System.out.println("Please insert your birth year.");
-			student1.setBirthYear(Integer.parseInt(input.nextLine()));
-			
+			student1.setBirthYear(input.nextInt());
+			System.out.println("");
 			allStu++;
 			stuRecs.add(student1); // Adding the student
-		
 	}
-
 	public static void printInfo(Student student1) throws FileNotFoundException {
 
 		System.out.println("Student Number: " + student1.getStudentNumber());
@@ -144,35 +142,20 @@ public class StudentInfo {
 		long remove;
 		boolean removal = false; 
 		System.out.println("Please enter the student number of the student you'd like to remove.");
-		remove = input.nextLong();
-		//do{ 
-			for (int i = 0; i < stuRecs.size(); i++){
-				if (remove == student1.getStudentNumber()){
-					stuRecs.remove(i);
-					
-				}
-				break; 
-			}
-			
-			/*if (remove > 300000000){
-				stuRecs.remove(remove - 300000001);
-				break;
-			}
-			else{
-				
-			}*/
-			
-		//} while (removal == false);
+		numStu = input.nextInt();
 		
+		if (numStu > 300000000){
+		stuRecs.remove(numStu - 300000001);
+		}
 	}
 
 	public static void searchStudent() throws FileNotFoundException {
 		System.out.println("Please enter the student number of the student you're looking for.");
-		int studentNumber = input.nextInt();
-		printInfo(stuRecs.get(studentNumber));
-
+		numStu = input.nextInt();
+		if (numStu > 300000000){
+			printInfo(stuRecs.get(numStu - 300000001));
+			}
 	}
- 
 	public static void printAll(Student student2) throws FileNotFoundException {
 		for (int i = 0; i < stuRecs.size(); i++) {
 
