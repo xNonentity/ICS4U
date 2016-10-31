@@ -12,7 +12,7 @@ public class Student implements Comparable {
 		setPosCode("");
 		setBirthMonth("");
 		setStreetNum(0);
-		setPhoneNum(0);
+		setPhoneNum((long) 0);
 		setBirthDay(0);
 		setBirthYear(0);
 		this.setStudentNumber(idGenerator);
@@ -105,13 +105,13 @@ public class Student implements Comparable {
 	}
 
 	// Phone Number
-	public long phoneNum;
+	public Long phoneNum;
 
-	public void setPhoneNum(long pnum) {
+	public void setPhoneNum(Long pnum) {
 		this.phoneNum = pnum;
 	}
 
-	public long getPhoneNum() {
+	public Long getPhoneNum() {
 		return this.phoneNum;
 	}
 
@@ -160,11 +160,11 @@ public class Student implements Comparable {
 
 	}
 
-	public Student(int streetNum, int phoneNum, int birthDay, int birthYear) {
+	public Student(int streetNum, int birthDay, int birthYear, long phoneNum) {
 		setStreetNum(streetNum);
-		setPhoneNum(phoneNum);
 		setBirthDay(birthDay);
 		setBirthYear(birthYear);
+		setPhoneNum(phoneNum);
 	}
 
 	public String toString() {
